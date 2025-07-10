@@ -34,7 +34,14 @@ class UsersController < ApplicationController
   end
 
   def update
-    if @user.update(user_params)
+    update_params = user_params
+
+    # Remove password params if they're blank (user doesn't want to change password)
+    if update_params[:password].blank?
+      update_params = update_params.except(:password, :password_confirmation)
+    end
+
+    if @user.update(update_params)
       flash[:notice] = "Your profile has been updated."
       redirect_to @user
     else
