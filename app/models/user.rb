@@ -8,12 +8,12 @@ class User < ApplicationRecord
   before_validation :set_default_role, on: :create
   before_save :normalize_email
 
-  scope :admins, -> { where(role: 'admin') }
+  scope :admins, -> { where(role: "admin") }
   scope :confirmed, -> { where.not(confirmed_at: nil) }
   scope :unconfirmed, -> { where(confirmed_at: nil) }
 
   def admin?
-    role == 'admin'
+    role == "admin"
   end
 
   def confirmed?
@@ -31,7 +31,7 @@ class User < ApplicationRecord
   private
 
   def set_default_role
-    self.role ||= 'user'
+    self.role ||= "user"
   end
 
   def normalize_email

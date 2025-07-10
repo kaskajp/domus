@@ -18,7 +18,7 @@ class ApplicationController < ActionController::Base
 
   def require_login
     unless logged_in?
-      flash[:alert] = 'You must be logged in to access this page.'
+      flash[:alert] = "You must be logged in to access this page."
       redirect_to login_path
     end
   end
@@ -26,7 +26,7 @@ class ApplicationController < ActionController::Base
   def require_admin
     require_login
     unless current_user&.admin?
-      flash[:alert] = 'You do not have permission to access this page.'
+      flash[:alert] = "You do not have permission to access this page."
       redirect_to root_path
     end
   end
