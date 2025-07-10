@@ -1,0 +1,129 @@
+<% content_for :title, "Dashboard - Domus" %>
+
+<div class="dashboard">
+  <div class="welcome-section mb-8">
+    <h1 class="text-3xl font-bold text-gray-900 mb-2">
+      Welcome to Domus, <%= @user.first_name %>!
+    </h1>
+    <p class="text-gray-600">
+      Your all-in-one home management platform
+    </p>
+  </div>
+
+  <div class="feature-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    <!-- Family Coordination Section -->
+    <div class="feature-card bg-white rounded-lg shadow-md p-6 border border-gray-200">
+      <div class="flex items-center mb-4">
+        <div class="bg-blue-100 p-3 rounded-lg">
+          <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+          </svg>
+        </div>
+        <h3 class="text-lg font-semibold text-gray-900 ml-3">Family Coordination</h3>
+      </div>
+      <p class="text-gray-600 mb-4">Manage chores, tasks, meals, and shared calendars</p>
+      <div class="space-y-2">
+        <a href="#" class="block text-sm text-blue-600 hover:text-blue-800">• Chores & Tasks</a>
+        <a href="#" class="block text-sm text-blue-600 hover:text-blue-800">• Shared Calendar</a>
+        <a href="#" class="block text-sm text-blue-600 hover:text-blue-800">• Meal Planning</a>
+        <a href="#" class="block text-sm text-blue-600 hover:text-blue-800">• Shopping Lists</a>
+      </div>
+    </div>
+
+    <!-- Property Management Section -->
+    <div class="feature-card bg-white rounded-lg shadow-md p-6 border border-gray-200">
+      <div class="flex items-center mb-4">
+        <div class="bg-green-100 p-3 rounded-lg">
+          <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2H5a2 2 0 00-2-2V7zm0 0V5a2 2 0 012-2h6l2 2h6a2 2 0 012 2v2M7 13h10"></path>
+          </svg>
+        </div>
+        <h3 class="text-lg font-semibold text-gray-900 ml-3">Property Management</h3>
+      </div>
+      <p class="text-gray-600 mb-4">Track documents, maintenance, and property records</p>
+      <div class="space-y-2">
+        <a href="#" class="block text-sm text-blue-600 hover:text-blue-800">• Document Storage</a>
+        <a href="#" class="block text-sm text-blue-600 hover:text-blue-800">• Maintenance Logs</a>
+        <a href="#" class="block text-sm text-blue-600 hover:text-blue-800">• Appliance Tracker</a>
+        <a href="#" class="block text-sm text-blue-600 hover:text-blue-800">• Renovation Projects</a>
+      </div>
+    </div>
+
+    <!-- Quick Actions Section -->
+    <div class="feature-card bg-white rounded-lg shadow-md p-6 border border-gray-200">
+      <div class="flex items-center mb-4">
+        <div class="bg-purple-100 p-3 rounded-lg">
+          <svg class="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+          </svg>
+        </div>
+        <h3 class="text-lg font-semibold text-gray-900 ml-3">Quick Actions</h3>
+      </div>
+      <p class="text-gray-600 mb-4">Fast access to common tasks and features</p>
+      <div class="space-y-3">
+        <button class="w-full btn btn-primary text-sm">Add New Task</button>
+        <button class="w-full btn btn-secondary text-sm">Upload Document</button>
+        <button class="w-full btn btn-secondary text-sm">Log Maintenance</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Recent Activity Section -->
+  <div class="mt-12">
+    <h2 class="text-xl font-semibold text-gray-900 mb-6">Recent Activity</h2>
+    <div class="bg-white rounded-lg shadow-md border border-gray-200">
+      <div class="p-6">
+        <div class="text-center text-gray-500 py-8">
+          <svg class="w-12 h-12 mx-auto mb-4 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path>
+          </svg>
+          <p class="text-lg font-medium text-gray-900 mb-1">No recent activity</p>
+          <p class="text-gray-500">Get started by creating your first task or uploading a document</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+.text-3xl { font-size: 1.875rem; line-height: 2.25rem; }
+.text-lg { font-size: 1.125rem; line-height: 1.75rem; }
+.text-xl { font-size: 1.25rem; line-height: 1.75rem; }
+.font-semibold { font-weight: 600; }
+.mb-8 { margin-bottom: 2rem; }
+.mb-6 { margin-bottom: 1.5rem; }
+.mb-2 { margin-bottom: 0.5rem; }
+.mt-12 { margin-top: 3rem; }
+.gap-6 { gap: 1.5rem; }
+.w-6 { width: 1.5rem; }
+.h-6 { height: 1.5rem; }
+.w-12 { width: 3rem; }
+.h-12 { height: 3rem; }
+.p-3 { padding: 0.75rem; }
+.p-6 { padding: 1.5rem; }
+.py-8 { padding-top: 2rem; padding-bottom: 2rem; }
+.ml-3 { margin-left: 0.75rem; }
+.space-y-2 > * + * { margin-top: 0.5rem; }
+.space-y-3 > * + * { margin-top: 0.75rem; }
+.rounded-lg { border-radius: 0.5rem; }
+.shadow-md { box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); }
+
+/* Color utilities */
+.bg-blue-100 { background-color: #dbeafe; }
+.bg-green-100 { background-color: #dcfce7; }
+.bg-purple-100 { background-color: #f3e8ff; }
+.text-blue-600 { color: #2563eb; }
+.text-green-600 { color: #16a34a; }
+.text-purple-600 { color: #9333ea; }
+.text-gray-300 { color: #d1d5db; }
+.text-gray-500 { color: #6b7280; }
+
+/* Grid utilities */
+@media (min-width: 768px) {
+  .md\:grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (min-width: 1024px) {
+  .lg\:grid-cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+</style>
