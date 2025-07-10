@@ -22,7 +22,7 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body class="min-h-screen bg-gray-50" data-controller="sidebar">
+  <body class="min-h-screen bg-gray-50" data-controller="sidebar" data-theme="<%= logged_in? ? current_user.theme : 'light' %>">
     <% if logged_in? %>
       <!-- Mobile menu overlay -->
       <div id="mobile-menu-overlay" class="mobile-menu-overlay"></div>

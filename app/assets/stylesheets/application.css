@@ -518,3 +518,115 @@ a:hover {
   .px-6 { padding-left: var(--space-8); padding-right: var(--space-8); }
   .lg\:hidden { display: none; }
 }
+
+/* Dark Theme */
+[data-theme="dark"] {
+  /* Dark theme color overrides */
+  --color-white: #1f2937;
+  --color-gray-50: #111827;
+  --color-gray-100: #1f2937;
+  --color-gray-200: #374151;
+  --color-gray-300: #4b5563;
+  --color-gray-400: #6b7280;
+  --color-gray-500: #9ca3af;
+  --color-gray-600: #d1d5db;
+  --color-gray-700: #e5e7eb;
+  --color-gray-800: #f3f4f6;
+  --color-gray-900: #ffffff;
+
+  /* Status colors for dark theme */
+  --color-green-50: #064e3b;
+  --color-green-200: #059669;
+  --color-green-800: #86efac;
+  --color-red-50: #7f1d1d;
+  --color-red-200: #dc2626;
+  --color-red-800: #fca5a5;
+  --color-yellow-50: #78350f;
+  --color-yellow-200: #d97706;
+  --color-yellow-800: #fcd34d;
+  --color-blue-50: #1e3a8a;
+  --color-blue-200: #3b82f6;
+  --color-blue-800: #93c5fd;
+
+  /* Dark theme background */
+  background-color: var(--color-gray-50);
+  color: var(--color-gray-800);
+}
+
+[data-theme="dark"] body {
+  background-color: var(--color-gray-50);
+  color: var(--color-gray-800);
+}
+
+[data-theme="dark"] .bg-white {
+  background-color: var(--color-white);
+}
+
+[data-theme="dark"] .bg-gray-50 {
+  background-color: var(--color-gray-50);
+}
+
+[data-theme="dark"] .bg-gray-100 {
+  background-color: var(--color-gray-100);
+}
+
+[data-theme="dark"] .text-gray-500 {
+  color: var(--color-gray-500);
+}
+
+[data-theme="dark"] .text-gray-700 {
+  color: var(--color-gray-700);
+}
+
+[data-theme="dark"] .text-gray-900 {
+  color: var(--color-gray-900);
+}
+
+[data-theme="dark"] .border-gray-200 {
+  border-color: var(--color-gray-200);
+}
+
+[data-theme="dark"] .sidebar {
+  background-color: var(--color-white);
+  border-right-color: var(--color-gray-200);
+}
+
+[data-theme="dark"] .sidebar-header {
+  border-bottom-color: var(--color-gray-200);
+}
+
+[data-theme="dark"] .sidebar-footer {
+  border-top-color: var(--color-gray-200);
+}
+
+[data-theme="dark"] .mobile-header {
+  background-color: var(--color-white);
+  border-bottom-color: var(--color-gray-200);
+}
+
+[data-theme="dark"] .menu-button:hover {
+  background-color: var(--color-gray-100);
+}
+
+[data-theme="dark"] .nav-item:hover {
+  background-color: var(--color-gray-100);
+}
+
+[data-theme="dark"] .user-menu {
+  background-color: var(--color-white);
+}
+
+[data-theme="dark"] .user-menu a:hover {
+  background-color: var(--color-gray-100);
+}
+
+[data-theme="dark"] .form-input {
+  background-color: var(--color-white);
+  border-color: var(--color-gray-300);
+  color: var(--color-gray-900);
+}
+
+[data-theme="dark"] .form-input:focus {
+  border-color: var(--color-blue-500);
+  box-shadow: var(--shadow-focus);
+}

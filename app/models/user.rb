@@ -5,6 +5,7 @@ class User < ApplicationRecord
   validates :email, presence: true, uniqueness: { case_sensitive: false }, format: { with: URI::MailTo::EMAIL_REGEXP }
   validates :first_name, :last_name, presence: true
   validates :role, inclusion: { in: %w[admin user] }
+  validates :theme, inclusion: { in: %w[light dark] }
   validate :avatar_validation
 
   before_validation :set_default_role, on: :create
