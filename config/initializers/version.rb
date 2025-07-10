@@ -4,4 +4,4 @@ module Domus
 end
 
 # Also define a global VERSION constant for compatibility
-VERSION = Domus::VERSION unless defined?(VERSION) 
+VERSION = Domus::VERSION unless defined?(VERSION)
