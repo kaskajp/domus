@@ -34,7 +34,7 @@
           <div class="sidebar-header">
             <%= link_to root_path, class: "flex items-center" do %>
               <span class="text-xl font-bold text-gray-900">Domus</span>
-              <span class="text-xs text-gray-500 ml-1">v<%= VERSION %></span>
+              <span class="text-xs text-gray-500 ml-1">v<%= Domus::VERSION %></span>
             <% end %>
             
             <!-- Close button for mobile -->
@@ -172,10 +172,10 @@
           </svg>
         </button>
         
-        <%= link_to root_path, class: "flex items-center" do %>
-          <span class="text-xl font-bold text-gray-900">Domus</span>
-          <span class="text-xs text-gray-500 ml-1">v<%= VERSION %></span>
-        <% end %>
+                    <%= link_to root_path, class: "flex items-center" do %>
+              <span class="text-xl font-bold text-gray-900">Domus</span>
+              <span class="text-xs text-gray-500 ml-1">v<%= Domus::VERSION %></span>
+            <% end %>
         
         <div class="w-6"></div> <!-- Spacer for centering -->
       </div>
