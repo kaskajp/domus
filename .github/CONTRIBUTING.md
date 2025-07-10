@@ -1,6 +1,6 @@
-# Contributing to Domus
+# Domus Development Guidelines
 
-Thank you for your interest in contributing to Domus! This guide will help you understand our development process and contribution standards.
+Domus is a **public source** project - the code is publicly available for learning and inspiration. This document outlines the development standards and commit conventions used in the project.
 
 ## Conventional Commits
 
@@ -71,13 +71,15 @@ chore: update dependencies
 chore(deps): bump rails to 8.0.3
 ```
 
-## Development Workflow
+## Development Approach
 
-1. **Fork the repository** and create a feature branch from `develop`
-2. **Make your changes** following our coding standards
-3. **Write tests** for new functionality
-4. **Use conventional commits** for all commit messages
-5. **Submit a pull request** to the `develop` branch
+If you're forking this project for your own use, here's the development approach used:
+
+1. **Feature branches** created from `develop` branch
+2. **Code standards** maintained with RuboCop
+3. **Tests** written for new functionality  
+4. **Conventional commits** used for automated versioning
+5. **Pull requests** merged to `develop` before releasing to `main`
 
 ## Automated Releases
 
@@ -100,6 +102,23 @@ chore(deps): bump rails to 8.0.3
 - `feature/*`: Feature development branches
 - `hotfix/*`: Emergency fixes for production
 
-## Questions?
+## Questions & Issues
 
-Feel free to open an issue if you have questions about contributing! 
+As a **public source** project:
+
+- **Critical Security Issues**: Please report these via GitHub issues
+- **Architecture Questions**: Feel free to open an issue for discussion about self-hosting approaches
+- **Setup Help**: Check the [README](../README.md) for installation instructions
+- **Forking Guidance**: Issues can be opened for clarification on adapting the code
+
+## Project Philosophy
+
+This project prioritizes:
+- **Self-hosting** and privacy-first design
+- **Simplicity** over feature bloat
+- **Family-focused** functionality
+- **No external dependencies** or cloud services
+
+## License
+
+This project is available under the MIT License, allowing you to freely fork and adapt for your own needs. 

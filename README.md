@@ -1,5 +1,10 @@
 # Domus - Self-Hosted Home Management
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Ruby on Rails](https://img.shields.io/badge/Rails-8.0+-red.svg)](https://rubyonrails.org/)
+[![Ruby Version](https://img.shields.io/badge/Ruby-3.4+-red.svg)](https://www.ruby-lang.org/)
+[![Public Source](https://img.shields.io/badge/Source-Public-blue.svg)](#public-source-project)
+
 Domus is a self-hosted, privacy-first, all-in-one home management web app built with Ruby on Rails 8. It helps families and households coordinate daily life, manage property documents and service logs, and streamline communication—all in a modern and responsive interface.
 
 ## Features
@@ -104,7 +109,7 @@ git commit -m "feat: add task management system"
 git push origin main
 ```
 
-See [CONTRIBUTING.md](.github/CONTRIBUTING.md) for detailed commit standards.
+See [Development Guidelines](.github/CONTRIBUTING.md) for detailed commit standards and development approach.
 
 ## Development Features
 
@@ -150,13 +155,21 @@ docker run -p 3000:3000 -v domus_data:/app/storage domus
 - 🔄 Property management features
 - 🔄 Shopping lists and meal planning
 
-## Contributing
+## Public Source Project
 
-This is a personal/family project focused on self-hosting and privacy. Feel free to fork and adapt for your own needs!
+This is a **public source** project - the code is publicly viewable for learning and inspiration. While the code is available under the MIT License, this is not actively seeking community contributions at this time.
+
+Feel free to:
+- ✅ **Fork and adapt** for your own needs
+- ✅ **Learn from the codebase** and implementation patterns  
+- ✅ **Use as inspiration** for your own projects
+- ✅ **Report critical security issues** if found
+
+For questions or discussions about the architecture and self-hosting approach, feel free to open an issue.
 
 ## License
 
-This project is private. Please respect the self-hosted nature and privacy-first principles.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ---
 
