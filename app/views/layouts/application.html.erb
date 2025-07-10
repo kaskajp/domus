@@ -154,7 +154,7 @@
                   <%= link_to current_user do %>
                     Profile Settings
                   <% end %>
-                  <%= link_to logout_path, method: :delete do %>
+                  <%= link_to logout_path, data: { turbo_method: :delete } do %>
                     Sign Out
                   <% end %>
                 </div>
