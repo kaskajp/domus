@@ -134,6 +134,7 @@
           <!-- User section -->
           <div class="sidebar-footer">
             <div class="user-info">
+              <%= render 'shared/user_avatar', user: current_user, size: :small %>
               <div class="user-details">
                 <p class="user-name">
                   <%= current_user.full_name %>

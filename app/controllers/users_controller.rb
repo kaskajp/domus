@@ -41,6 +41,15 @@ class UsersController < ApplicationController
       update_params = update_params.except(:password, :password_confirmation)
     end
 
+    # Handle avatar removal - always remove this param as it's not a real model attribute
+    remove_avatar = params[:user][:remove_avatar] == "1"
+    update_params = update_params.except(:remove_avatar)
+
+    # Remove current avatar if requested
+    if remove_avatar
+      @user.avatar.purge
+    end
+
     if @user.update(update_params)
       flash[:notice] = "Your profile has been updated."
       redirect_to @user
@@ -56,7 +65,7 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:email, :password, :password_confirmation, :first_name, :last_name)
+    params.require(:user).permit(:email, :password, :password_confirmation, :first_name, :last_name, :avatar, :remove_avatar)
   end
 
   def redirect_if_logged_in
