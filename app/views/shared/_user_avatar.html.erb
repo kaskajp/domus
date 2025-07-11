@@ -1,0 +1,25 @@
+<%
+  # Set defaults
+  size ||= :small
+  class_name ||= ""
+  
+  # Size mappings
+  size_classes = {
+    small: "w-8 h-8 text-xs",
+    medium: "w-16 h-16 text-sm", 
+    large: "w-20 h-20 text-base"
+  }
+  
+  avatar_classes = "#{size_classes[size]} rounded-full object-cover #{class_name}"
+  initials_classes = "#{size_classes[size]} rounded-full bg-blue-500 text-white font-medium flex items-center justify-center #{class_name}"
+%>
+
+<% if user.avatar.attached? %>
+  <%= image_tag user.avatar_url(size: size), 
+      alt: "#{user.full_name}'s profile picture",
+      class: avatar_classes %>
+<% else %>
+  <div class="<%= initials_classes %>">
+    <%= user.initials %>
+  </div>
+<% end %> 

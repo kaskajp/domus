@@ -1,0 +1,83 @@
+name: Release
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Install packages
+        run: sudo apt-get update && sudo apt-get install --no-install-recommends -y build-essential git libyaml-dev pkg-config google-chrome-stable
+
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: .ruby-version
+          bundler-cache: true
+
+      - name: Run security scan
+        run: bin/brakeman --no-pager
+
+      - name: Lint code
+        run: bin/rubocop -f github
+
+      - name: Run tests
+        env:
+          RAILS_ENV: test
+        run: bin/rails db:test:prepare test test:system
+
+  release:
+    needs: test
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+    
+    permissions:
+      contents: write
+      issues: write
+      pull-requests: write
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Set up Node.js (for semantic-release only)
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install semantic-release dependencies
+        run: |
+          npm install --no-save \
+            semantic-release \
+            @semantic-release/changelog \
+            @semantic-release/commit-analyzer \
+            @semantic-release/exec \
+            @semantic-release/git \
+            @semantic-release/github \
+            @semantic-release/release-notes-generator \
+            conventional-changelog-conventionalcommits
+
+      - name: Create initial version files if they don't exist
+        run: |
+          if [ ! -f VERSION ]; then
+            echo "0.0.0" > VERSION
+          fi
+          if [ ! -f config/version.rb ]; then
+            mkdir -p config
+            echo 'VERSION = "0.0.0"' > config/version.rb
+          fi
+
+      - name: Run semantic-release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: npx semantic-release 

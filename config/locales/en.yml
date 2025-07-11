@@ -1,0 +1,330 @@
+en:
+  # Application-wide strings
+  app:
+    name: "Domus"
+    tagline: "Your all-in-one home management platform"
+    description: "Self-hosted, privacy-first home management"
+  
+  # Navigation
+  nav:
+    dashboard: "Dashboard"
+    tasks: "Tasks & Chores"
+    calendar: "Calendar"
+    documents: "Documents"
+    projects: "Projects"
+    shopping: "Shopping"
+    meals: "Meals"
+    settings: "Settings"
+    profile: "Profile"
+    logout: "Sign Out"
+    soon_badge: "Soon"
+  
+  # Common actions
+  actions:
+    create: "Create"
+    edit: "Edit"
+    update: "Update"
+    delete: "Delete"
+    cancel: "Cancel"
+    save: "Save"
+    save_changes: "Save Changes"
+    back: "Back"
+    view: "View"
+    show: "Show"
+    hide: "Hide"
+    search: "Search"
+    filter: "Filter"
+    sort: "Sort"
+    reset: "Reset"
+    submit: "Submit"
+    confirm: "Confirm"
+    close: "Close"
+  
+  # Authentication
+  auth:
+    sign_in: "Sign In"
+    sign_up: "Sign Up"
+    sign_out: "Sign Out"
+    welcome_back: "Welcome back"
+    create_account: "Create your account"
+    get_started: "Get started with Domus for your home management"
+    already_have_account: "Already have an account?"
+    dont_have_account: "Don't have an account?"
+    email: "Email"
+    password: "Password"
+    confirm_password: "Confirm Password"
+    first_name: "First Name"
+    last_name: "Last Name"
+    remember_me: "Remember me"
+  
+  # Dashboard
+  dashboard:
+    welcome: "Welcome to Domus, %{name}!"
+    family_coordination: "Family Coordination"
+    family_coordination_desc: "Manage chores, tasks, meals, and shared calendars"
+    property_management: "Property Management"
+    property_management_desc: "Track documents, maintenance, and property records"
+    quick_actions: "Quick Actions"
+    quick_actions_desc: "Fast access to common tasks and features"
+    recent_activity: "Recent Activity"
+    no_recent_activity: "No recent activity"
+    get_started_message: "Get started by creating your first task or uploading a document"
+    features:
+      chores_tasks: "Chores & Tasks"
+      shared_calendar: "Shared Calendar"
+      meal_planning: "Meal Planning"
+      shopping_lists: "Shopping Lists"
+      document_storage: "Document Storage"
+      maintenance_logs: "Maintenance Logs"
+      appliance_tracker: "Appliances"
+      renovation_projects: "Renovations"
+      add_new_task: "Add New Task"
+      upload_document: "Upload Document"
+      log_maintenance: "Log Maintenance"
+  
+  # Tasks
+  tasks:
+    title: "Tasks & Chores"
+    subtitle: "Manage your household tasks and chores"
+    new_task: "New Task"
+    create_task: "Create New Task"
+    edit_task: "Edit Task"
+    update_task: "Update Task"
+    create_new_task: "Create Task"
+    view_task: "View Task"
+    delete_task: "Delete Task"
+    task_created: "Task was successfully created."
+    task_updated: "Task was successfully updated."
+    task_deleted: "Task was successfully deleted."
+    task_completed: "Task marked as completed."
+    task_completed_recurring: "Task completed! Next occurrence created for %{date}."
+    task_incomplete: "Task marked as incomplete."
+    confirm_delete: "Are you sure you want to delete this task?"
+    no_permission: "You don't have permission to access this task."
+    
+    # Task form
+    form:
+      basic_information: "Basic Information"
+      assignment_priority: "Assignment & Priority"
+      due_date_time: "Due Date & Time"
+      recurring_options: "Recurring Options"
+      tags: "Tags"
+      task_status: "Task Status"
+      title: "Title"
+      title_placeholder: "Enter task title"
+      description: "Description"
+      description_placeholder: "Describe the task (optional)"
+      assign_to: "Assign to"
+      unassigned: "Unassigned"
+      priority: "Priority"
+      due_date: "Due date"
+      due_time: "Due time (optional)"
+      is_recurring: "This is a recurring task"
+      recurrence: "Recurrence"
+      recurrence_placeholder: "Select recurrence..."
+      custom_interval: "Custom interval (days)"
+      custom_interval_placeholder: "Enter number of days"
+      custom_interval_help: "Number of days between recurring tasks"
+      tags_placeholder: "Enter tags separated by commas (e.g., cleaning, kitchen, weekly)"
+      tags_help: "Use tags to organize and categorize your tasks"
+      current_status: "Current Status"
+      completed_on: "Completed on %{date}"
+    
+    # Task statuses and priorities
+    status:
+      completed: "Completed"
+      incomplete: "Incomplete"
+      overdue: "Overdue"
+      due_today: "Due Today"
+      mark_complete: "Mark as Complete"
+      mark_incomplete: "Mark as Incomplete"
+    
+    priorities:
+      low: "Low"
+      medium: "Medium"
+      high: "High"
+      urgent: "Urgent"
+    
+    recurrence_types:
+      daily: "Daily"
+      weekly: "Weekly"
+      monthly: "Monthly"
+      quarterly: "Quarterly"
+      yearly: "Yearly"
+      custom: "Custom interval"
+    
+    # Task list and stats
+    stats:
+      total_tasks: "Total Tasks"
+      incomplete_tasks: "Incomplete"
+      completed_tasks: "Completed"
+      overdue_tasks: "Overdue"
+      due_today_tasks: "Due Today"
+    
+    filters:
+      all_tasks: "All Tasks"
+      incomplete: "Incomplete"
+      completed: "Completed"
+      overdue: "Overdue"
+      due_today: "Due Today"
+      assigned_to: "Assigned to"
+      created_by: "Created by"
+      priority: "Priority"
+      all_priorities: "All Priorities"
+      all_users: "All Users"
+      sort_by: "Sort by"
+      recent: "Recent"
+      due_date: "Due Date"
+    
+    empty_state:
+      no_tasks: "No tasks found"
+      no_tasks_message: "Get started by creating a new task or adjusting your filters."
+      create_first_task: "Create your first task"
+    
+    details:
+      assigned_to: "Assigned To"
+      created_by: "Created By"
+      created: "Created"
+      completed: "Completed"
+      last_updated: "Last Updated"
+      recurring_schedule: "Recurring Schedule"
+      next_occurrence: "Next occurrence"
+      quick_actions: "Quick Actions"
+      related_tasks: "Other Recent Tasks"
+      due_on: "Due %{date}"
+      at_time: "at %{time}"
+  
+  # Users and Profile
+  users:
+    profile: "Profile"
+    profile_settings: "Profile Settings"
+    edit_profile: "Edit Profile"
+    account_info: "Manage your account information and preferences"
+    update_info: "Update your account information"
+    profile_picture: "Profile Picture"
+    upload_new_picture: "Upload new picture"
+    picture_help: "JPG, PNG, GIF, or WebP up to 5MB"
+    remove_current_picture: "Remove current picture"
+    basic_information: "Basic Information"
+    change_password: "Change Password"
+    password_help: "Leave password fields blank if you don't want to change your password"
+    new_password: "New Password"
+    new_password_placeholder: "Enter new password (optional)"
+    confirm_new_password: "Confirm New Password"
+    confirm_password_placeholder: "Confirm new password"
+    password_length_help: "Must be at least 6 characters long"
+    account_information: "Account Information"
+    role: "Role"
+    account_status: "Account Status"
+    member_since: "Member Since"
+    last_updated: "Last updated %{time} ago"
+    theme: "Theme"
+    theme_help: "Choose your preferred color theme"
+    contact_admin_role: "Contact an admin to change your role"
+    pending_approval: "Your account is pending admin approval"
+    
+    roles:
+      admin: "Admin"
+      user: "User"
+    
+    status:
+      confirmed: "Confirmed"
+      pending: "Pending Confirmation"
+    
+    themes:
+      light: "Light"
+      dark: "Dark"
+    
+    admin_actions: "Admin Actions"
+    admin_privileges: "As an admin, you have additional privileges to manage users and system settings."
+    user_management: "User Management"
+    user_management_desc: "Invite new users and manage permissions"
+    system_settings: "System Settings"
+    system_settings_desc: "Configure application preferences"
+    coming_soon: "Coming Soon"
+  
+  # Time and dates
+  time:
+    today: "Today"
+    yesterday: "Yesterday"
+    tomorrow: "Tomorrow"
+    this_week: "This Week"
+    last_week: "Last Week"
+    next_week: "Next Week"
+    this_month: "This Month"
+    last_month: "Last Month"
+    next_month: "Next Month"
+    due_date: "Due Date"
+    created_at: "Created"
+    updated_at: "Updated"
+    completed_at: "Completed"
+  
+  # Flash messages
+  flash:
+    success: "Success!"
+    error: "Error!"
+    warning: "Warning!"
+    notice: "Notice"
+    alert: "Alert"
+  
+  # Form validation
+  errors:
+    header:
+      one: "1 error prohibited this %{model} from being saved:"
+      other: "%{count} errors prohibited this %{model} from being saved:"
+    fix_errors: "Please fix the following errors:"
+    messages:
+      blank: "can't be blank"
+      too_short: "is too short (minimum is %{count} characters)"
+      too_long: "is too long (maximum is %{count} characters)"
+      invalid: "is invalid"
+      taken: "has already been taken"
+      confirmation: "doesn't match"
+      format: "is invalid format"
+  
+  # Models
+  activerecord:
+    models:
+      user: "User"
+      task: "Task"
+    
+    attributes:
+      user:
+        first_name: "First name"
+        last_name: "Last name"
+        email: "Email address"
+        password: "Password"
+        password_confirmation: "Password confirmation"
+        role: "Role"
+        theme: "Theme"
+        confirmed: "Confirmed"
+        created_at: "Created at"
+        updated_at: "Updated at"
+      
+      task:
+        title: "Title"
+        description: "Description"
+        priority: "Priority"
+        due_date: "Due date"
+        due_time: "Due time"
+        assignee: "Assigned to"
+        created_by: "Created by"
+        recurring: "Recurring"
+        recurrence_type: "Recurrence type"
+        recurrence_interval: "Recurrence interval"
+        tags: "Tags"
+        completed_at: "Completed at"
+        created_at: "Created at"
+        updated_at: "Updated at"
+  
+  # Page titles
+  titles:
+    dashboard: "Dashboard - Domus"
+    sign_in: "Sign In - Domus"
+    sign_up: "Sign Up - Domus"
+    tasks: "Tasks & Chores - Domus"
+    new_task: "New Task - Domus"
+    edit_task: "Edit Task - Domus"
+    task_details: "Task Details - Domus"
+    profile: "Profile Settings - Domus"
+    edit_profile: "Edit Profile - Domus"
