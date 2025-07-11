@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 <!-- CHANGELOG:INSERT -->
 
+## [1.0.1](https://github.com/kaskajp/domus/compare/v1.0.0...v1.0.1) (2025-07-11)
+
+### 🐛 Bug Fixes
+
+* Contributing guidelines ([7cbe091](https://github.com/kaskajp/domus/commit/7cbe09114b0f2da38443992d32b49646a6dc4ca0))
+* Contributing guidelines ([7ef30cd](https://github.com/kaskajp/domus/commit/7ef30cdb4e8173a3ff154fb74b3f2492430fe6b5))
+
 ## 1.0.0 (2025-07-11)
 
 ### 🚀 Features
