@@ -68,7 +68,7 @@ class TasksController < ApplicationController
     @task.created_by = current_user
     
     if @task.save
-      flash[:notice] = "Task '#{@task.title}' was created successfully."
+      flash[:notice] = t('tasks.task_created')
       redirect_to @task
     else
       @users = User.all.order(:first_name)
@@ -82,7 +82,7 @@ class TasksController < ApplicationController
 
   def update
     if @task.update(task_params)
-      flash[:notice] = "Task '#{@task.title}' was updated successfully."
+      flash[:notice] = t('tasks.task_updated')
       redirect_to @task
     else
       @users = User.all.order(:first_name)
@@ -93,7 +93,7 @@ class TasksController < ApplicationController
   def destroy
     title = @task.title
     @task.destroy!
-    flash[:notice] = "Task '#{title}' was deleted successfully."
+    flash[:notice] = t('tasks.task_deleted')
     redirect_to tasks_path
   end
 
@@ -103,9 +103,9 @@ class TasksController < ApplicationController
     # Create next occurrence if recurring
     if @task.recurring?
       next_task = @task.create_next_occurrence!
-      flash[:notice] = "Task completed! Next occurrence created for #{next_task.due_date}."
+      flash[:notice] = t('tasks.task_completed_recurring', date: next_task.due_date)
     else
-      flash[:notice] = "Task '#{@task.title}' marked as completed."
+      flash[:notice] = t('tasks.task_completed')
     end
     
     redirect_back(fallback_location: tasks_path)
@@ -113,7 +113,7 @@ class TasksController < ApplicationController
 
   def incomplete
     @task.incomplete!
-    flash[:notice] = "Task '#{@task.title}' marked as incomplete."
+    flash[:notice] = t('tasks.task_incomplete')
     redirect_back(fallback_location: tasks_path)
   end
 
@@ -135,7 +135,7 @@ class TasksController < ApplicationController
     return if current_user.admin?
     return if @task.created_by == current_user || @task.assignee == current_user
     
-    flash[:alert] = "You don't have permission to access this task."
+    flash[:alert] = t('tasks.no_permission')
     redirect_to tasks_path
   end
 

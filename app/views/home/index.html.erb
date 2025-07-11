@@ -1,12 +1,12 @@
-<% content_for :title, "Dashboard - Domus" %>
+<% content_for :title, t('titles.dashboard') %>
 
 <div class="dashboard">
   <div class="welcome-section mb-8">
     <h1 class="text-3xl font-bold text-gray-900 mb-2">
-      Welcome to Domus, <%= @user.first_name %>!
+      <%= t('dashboard.welcome', name: @user.first_name) %>
     </h1>
     <p class="text-gray-600">
-      Your all-in-one home management platform
+      <%= t('app.tagline') %>
     </p>
   </div>
 
@@ -19,14 +19,14 @@
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
           </svg>
         </div>
-        <h3 class="text-lg font-semibold text-gray-900 ml-3">Family Coordination</h3>
+        <h3 class="text-lg font-semibold text-gray-900 ml-3"><%= t('dashboard.family_coordination') %></h3>
       </div>
-      <p class="text-gray-600 mb-4">Manage chores, tasks, meals, and shared calendars</p>
+      <p class="text-gray-600 mb-4"><%= t('dashboard.family_coordination_desc') %></p>
       <div class="space-y-2">
-        <a href="#" class="block text-sm text-blue-600 hover:text-blue-800">• Chores & Tasks</a>
-        <a href="#" class="block text-sm text-blue-600 hover:text-blue-800">• Shared Calendar</a>
-        <a href="#" class="block text-sm text-blue-600 hover:text-blue-800">• Meal Planning</a>
-        <a href="#" class="block text-sm text-blue-600 hover:text-blue-800">• Shopping Lists</a>
+        <a href="#" class="block text-sm text-blue-600 hover:text-blue-800">• <%= t('dashboard.features.chores_tasks') %></a>
+        <a href="#" class="block text-sm text-blue-600 hover:text-blue-800">• <%= t('dashboard.features.shared_calendar') %></a>
+        <a href="#" class="block text-sm text-blue-600 hover:text-blue-800">• <%= t('dashboard.features.meal_planning') %></a>
+        <a href="#" class="block text-sm text-blue-600 hover:text-blue-800">• <%= t('dashboard.features.shopping_lists') %></a>
       </div>
     </div>
 
@@ -38,14 +38,14 @@
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2H5a2 2 0 00-2-2V7zm0 0V5a2 2 0 012-2h6l2 2h6a2 2 0 012 2v2M7 13h10"></path>
           </svg>
         </div>
-        <h3 class="text-lg font-semibold text-gray-900 ml-3">Property Management</h3>
+        <h3 class="text-lg font-semibold text-gray-900 ml-3"><%= t('dashboard.property_management') %></h3>
       </div>
-      <p class="text-gray-600 mb-4">Track documents, maintenance, and property records</p>
+      <p class="text-gray-600 mb-4"><%= t('dashboard.property_management_desc') %></p>
       <div class="space-y-2">
-        <a href="#" class="block text-sm text-blue-600 hover:text-blue-800">• Document Storage</a>
-        <a href="#" class="block text-sm text-blue-600 hover:text-blue-800">• Maintenance Logs</a>
-        <a href="#" class="block text-sm text-blue-600 hover:text-blue-800">• Appliance Tracker</a>
-        <a href="#" class="block text-sm text-blue-600 hover:text-blue-800">• Renovation Projects</a>
+        <a href="#" class="block text-sm text-blue-600 hover:text-blue-800">• <%= t('dashboard.features.document_storage') %></a>
+        <a href="#" class="block text-sm text-blue-600 hover:text-blue-800">• <%= t('dashboard.features.maintenance_logs') %></a>
+        <a href="#" class="block text-sm text-blue-600 hover:text-blue-800">• <%= t('dashboard.features.appliance_tracker') %></a>
+        <a href="#" class="block text-sm text-blue-600 hover:text-blue-800">• <%= t('dashboard.features.renovation_projects') %></a>
       </div>
     </div>
 
@@ -57,28 +57,28 @@
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
           </svg>
         </div>
-        <h3 class="text-lg font-semibold text-gray-900 ml-3">Quick Actions</h3>
+        <h3 class="text-lg font-semibold text-gray-900 ml-3"><%= t('dashboard.quick_actions') %></h3>
       </div>
-      <p class="text-gray-600 mb-4">Fast access to common tasks and features</p>
+      <p class="text-gray-600 mb-4"><%= t('dashboard.quick_actions_desc') %></p>
       <div class="space-y-3">
-        <button class="w-full btn btn-primary text-sm">Add New Task</button>
-        <button class="w-full btn btn-secondary text-sm">Upload Document</button>
-        <button class="w-full btn btn-secondary text-sm">Log Maintenance</button>
+        <button class="w-full btn btn-primary text-sm"><%= t('dashboard.features.add_new_task') %></button>
+        <button class="w-full btn btn-secondary text-sm"><%= t('dashboard.features.upload_document') %></button>
+        <button class="w-full btn btn-secondary text-sm"><%= t('dashboard.features.log_maintenance') %></button>
       </div>
     </div>
   </div>
 
   <!-- Recent Activity Section -->
   <div class="mt-12">
-    <h2 class="text-xl font-semibold text-gray-900 mb-6">Recent Activity</h2>
+    <h2 class="text-xl font-semibold text-gray-900 mb-6"><%= t('dashboard.recent_activity') %></h2>
     <div class="bg-white rounded-lg shadow-md border border-gray-200">
       <div class="p-6">
         <div class="text-center text-gray-500 py-8">
           <svg class="w-12 h-12 mx-auto mb-4 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path>
           </svg>
-          <p class="text-lg font-medium text-gray-900 mb-1">No recent activity</p>
-          <p class="text-gray-500">Get started by creating your first task or uploading a document</p>
+          <p class="text-lg font-medium text-gray-900 mb-1"><%= t('dashboard.no_recent_activity') %></p>
+          <p class="text-gray-500"><%= t('dashboard.get_started_message') %></p>
         </div>
       </div>
     </div>

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html>
+<html lang="<%= I18n.locale %>">
   <head>
-    <title><%= content_for(:title) || "Domus" %></title>
+    <title><%= content_for(:title) || t('app.name') %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="mobile-web-app-capable" content="yes">
@@ -33,7 +33,7 @@
           <!-- Logo -->
           <div class="sidebar-header">
             <%= link_to root_path, class: "flex items-center" do %>
-              <span class="text-xl font-bold text-gray-900">Domus</span>
+              <span class="text-xl font-bold text-gray-900"><%= t('app.name') %></span>
               <span class="text-xs text-gray-500 ml-1">v<%= Domus::VERSION %></span>
             <% end %>
             
@@ -52,55 +52,55 @@
               <svg class="nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2H5a2 2 0 00-2-2V7zm0 0V5a2 2 0 012-2h6l2 2h6a2 2 0 012 2v2M7 13h10"></path>
               </svg>
-              <span>Dashboard</span>
+              <span><%= t('nav.dashboard') %></span>
             <% end %>
 
             <!-- Family Coordination Section -->
             <div class="nav-section">
-              <h3 class="nav-section-title">Family Coordination</h3>
+              <h3 class="nav-section-title"><%= t('dashboard.family_coordination') %></h3>
               
               <%= link_to tasks_path, class: "nav-item #{'active' if controller_name == 'tasks'}" do %>
                 <svg class="nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"></path>
                 </svg>
-                <span>Tasks & Chores</span>
+                <span><%= t('nav.tasks') %></span>
               <% end %>
 
               <a href="#" class="nav-item">
                 <svg class="nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
                 </svg>
-                <span>Calendar</span>
-                <span class="nav-badge">Soon</span>
+                <span><%= t('nav.calendar') %></span>
+                <span class="nav-badge"><%= t('nav.soon_badge') %></span>
               </a>
 
               <a href="#" class="nav-item">
                 <svg class="nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
                 </svg>
-                <span>Meal Planning</span>
-                <span class="nav-badge">Soon</span>
+                <span><%= t('nav.meals') %></span>
+                <span class="nav-badge"><%= t('nav.soon_badge') %></span>
               </a>
 
               <a href="#" class="nav-item">
                 <svg class="nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4m0 0L7 13m0 0l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17M17 13v6a2 2 0 01-2 2H9a2 2 0 01-2-2v-6m8 0V9a2 2 0 00-2-2H9a2 2 0 00-2 2v4.01"></path>
                 </svg>
-                <span>Shopping Lists</span>
-                <span class="nav-badge">Soon</span>
+                <span><%= t('nav.shopping') %></span>
+                <span class="nav-badge"><%= t('nav.soon_badge') %></span>
               </a>
             </div>
 
             <!-- Property Management Section -->
             <div class="nav-section">
-              <h3 class="nav-section-title">Property Management</h3>
+              <h3 class="nav-section-title"><%= t('dashboard.property_management') %></h3>
               
               <a href="#" class="nav-item">
                 <svg class="nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path>
                 </svg>
-                <span>Documents</span>
-                <span class="nav-badge">Soon</span>
+                <span><%= t('nav.documents') %></span>
+                <span class="nav-badge"><%= t('nav.soon_badge') %></span>
               </a>
 
               <a href="#" class="nav-item">
@@ -108,24 +108,24 @@
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
                 </svg>
-                <span>Maintenance</span>
-                <span class="nav-badge">Soon</span>
+                <span><%= t('dashboard.features.maintenance_logs') %></span>
+                <span class="nav-badge"><%= t('nav.soon_badge') %></span>
               </a>
 
               <a href="#" class="nav-item">
                 <svg class="nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"></path>
                 </svg>
-                <span>Appliances</span>
-                <span class="nav-badge">Soon</span>
+                <span><%= t('dashboard.features.appliance_tracker') %></span>
+                <span class="nav-badge"><%= t('nav.soon_badge') %></span>
               </a>
 
               <a href="#" class="nav-item">
                 <svg class="nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
                 </svg>
-                <span>Renovations</span>
-                <span class="nav-badge">Soon</span>
+                <span><%= t('dashboard.features.renovation_projects') %></span>
+                <span class="nav-badge"><%= t('nav.soon_badge') %></span>
               </a>
             </div>
           </nav>
@@ -139,7 +139,7 @@
                   <%= current_user.full_name %>
                 </p>
                 <p class="user-role">
-                  <%= current_user.admin? ? "Admin" : "User" %>
+                  <%= current_user.admin? ? t('users.roles.admin') : t('users.roles.user') %>
                 </p>
               </div>
               
@@ -152,10 +152,10 @@
                 
                 <div id="user-menu" class="user-menu hidden">
                   <%= link_to current_user do %>
-                    Profile Settings
+                    <%= t('nav.profile') %>
                   <% end %>
                   <%= link_to logout_path, data: { turbo_method: :delete } do %>
-                    Sign Out
+                    <%= t('nav.logout') %>
                   <% end %>
                 </div>
               </div>
@@ -173,7 +173,7 @@
         </button>
         
                     <%= link_to root_path, class: "flex items-center" do %>
-              <span class="text-xl font-bold text-gray-900">Domus</span>
+              <span class="text-xl font-bold text-gray-900"><%= t('app.name') %></span>
               <span class="text-xs text-gray-500 ml-1">v<%= Domus::VERSION %></span>
             <% end %>
         

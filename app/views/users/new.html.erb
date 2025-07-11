@@ -1,15 +1,15 @@
-<% content_for :title, "Sign Up - Domus" %>
+<% content_for :title, t('titles.sign_up') %>
 
 <div class="auth-container">
   <div class="text-center mb-6">
-    <h1 class="text-2xl font-bold text-gray-900">Create your account</h1>
-    <p class="text-gray-600 mt-2">Get started with Domus for your home management</p>
+    <h1 class="text-2xl font-bold text-gray-900"><%= t('auth.create_account') %></h1>
+    <p class="text-gray-600 mt-2"><%= t('auth.get_started') %></p>
   </div>
 
   <%= form_with model: @user, url: signup_path, local: true, class: "space-y-4" do |form| %>
     <% if @user.errors.any? %>
       <div class="bg-red-50 border border-red-200 rounded-md p-4 mb-4">
-        <h3 class="text-sm font-medium text-red-800">Please fix the following errors:</h3>
+        <h3 class="text-sm font-medium text-red-800"><%= t('errors.fix_errors') %></h3>
         <ul class="mt-2 text-sm text-red-700">
           <% @user.errors.full_messages.each do |message| %>
             <li>• <%= message %></li>
@@ -20,57 +20,57 @@
 
     <div class="grid grid-cols-2 gap-4">
       <div class="form-group">
-        <%= form.label :first_name, class: "form-label" %>
+        <%= form.label :first_name, t('auth.first_name'), class: "form-label" %>
         <%= form.text_field :first_name, 
             required: true, 
             autofocus: true,
-            placeholder: "First name",
+            placeholder: t('auth.first_name'),
             class: "form-input" %>
       </div>
 
       <div class="form-group">
-        <%= form.label :last_name, class: "form-label" %>
+        <%= form.label :last_name, t('auth.last_name'), class: "form-label" %>
         <%= form.text_field :last_name, 
             required: true,
-            placeholder: "Last name",
+            placeholder: t('auth.last_name'),
             class: "form-input" %>
       </div>
     </div>
 
     <div class="form-group">
-      <%= form.label :email, class: "form-label" %>
+      <%= form.label :email, t('auth.email'), class: "form-label" %>
       <%= form.email_field :email, 
           required: true,
-          placeholder: "Enter your email",
+          placeholder: t('auth.email'),
           class: "form-input" %>
     </div>
 
     <div class="form-group">
-      <%= form.label :password, class: "form-label" %>
+      <%= form.label :password, t('auth.password'), class: "form-label" %>
       <%= form.password_field :password, 
           required: true,
-          placeholder: "Create a password",
+          placeholder: t('auth.password'),
           class: "form-input" %>
-      <p class="text-xs text-gray-500 mt-1">Must be at least 6 characters long</p>
+      <p class="text-xs text-gray-500 mt-1"><%= t('users.password_length_help') %></p>
     </div>
 
     <div class="form-group">
-      <%= form.label :password_confirmation, "Confirm Password", class: "form-label" %>
+      <%= form.label :password_confirmation, t('auth.confirm_password'), class: "form-label" %>
       <%= form.password_field :password_confirmation, 
           required: true,
-          placeholder: "Confirm your password",
+          placeholder: t('auth.confirm_password'),
           class: "form-input" %>
     </div>
 
     <div class="pt-4">
-      <%= form.submit "Create Account", class: "btn btn-primary w-full" %>
+      <%= form.submit t('auth.create_account'), class: "btn btn-primary w-full" %>
     </div>
   <% end %>
 
   <div class="text-center mt-6 pt-6 border-t border-gray-200">
     <p class="text-sm text-gray-600">
-      Already have an account? 
-      <%= link_to "Sign in", login_path, class: "text-blue-600 hover:text-blue-800 font-medium" %>
+      <%= t('auth.already_have_account') %>
+      <%= link_to t('auth.sign_in'), login_path, class: "text-blue-600 hover:text-blue-800 font-medium" %>
     </p>
   </div>
 </div>
