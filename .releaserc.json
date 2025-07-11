@@ -64,13 +64,13 @@
     [
       "@semantic-release/exec",
       {
-        "prepareCmd": "echo '${nextRelease.version}' > VERSION && echo 'VERSION = \"${nextRelease.version}\"' > config/version.rb"
+        "prepareCmd": "echo 'VERSION = \"${nextRelease.version}\"' > config/version.rb"
       }
     ],
     [
       "@semantic-release/git",
       {
-        "assets": ["CHANGELOG.md", "VERSION", "config/version.rb"],
+        "assets": ["CHANGELOG.md", "config/version.rb"],
         "message": "chore(release): ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}"
       }
     ],

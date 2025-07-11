@@ -1,7 +1,7 @@
-# Define the application version
-module Domus
-  VERSION = "0.1.0"
-end
+# Load version from the file that semantic-release updates
+require Rails.root.join('config', 'version')
 
-# Also define a global VERSION constant for compatibility
-VERSION = Domus::VERSION unless defined?(VERSION)
+# Define the application version module
+module Domus
+  VERSION = ::VERSION
+end

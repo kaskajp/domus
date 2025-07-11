@@ -66,11 +66,8 @@ jobs:
             @semantic-release/release-notes-generator \
             conventional-changelog-conventionalcommits
 
-      - name: Create initial version files if they don't exist
+      - name: Create initial version file if it doesn't exist
         run: |
-          if [ ! -f VERSION ]; then
-            echo "0.0.0" > VERSION
-          fi
           if [ ! -f config/version.rb ]; then
             mkdir -p config
             echo 'VERSION = "0.0.0"' > config/version.rb
