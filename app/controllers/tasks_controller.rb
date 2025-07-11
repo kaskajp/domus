@@ -4,6 +4,7 @@ class TasksController < ApplicationController
   before_action :require_task_access, only: [ :show, :edit, :update, :destroy ]
 
   def index
+    @view = params[:view] || "list"
     @tasks = current_user_tasks
 
     # Filter by status
@@ -30,17 +31,11 @@ class TasksController < ApplicationController
       @tasks = @tasks.where(priority: params[:priority])
     end
 
-    # Sort
-    case params[:sort]
-    when "priority"
-      @tasks = @tasks.by_priority
-    when "due_date"
-      @tasks = @tasks.by_due_date
+    if @view == "week"
+      setup_weekly_view
     else
-      @tasks = @tasks.recent
+      setup_list_view
     end
-
-    @tasks = @tasks.includes(:assignee, :created_by)
 
     # Statistics for dashboard
     @stats = {
@@ -60,6 +55,12 @@ class TasksController < ApplicationController
 
   def new
     @task = Task.new
+
+    # Pre-populate due_date if provided in URL params
+    if params[:due_date].present?
+      @task.due_date = Date.parse(params[:due_date])
+    end
+
     @users = User.all.order(:first_name)
   end
 
@@ -118,6 +119,50 @@ class TasksController < ApplicationController
   end
 
   private
+
+  def setup_weekly_view
+    # Calculate current week
+    @current_week = if params[:week].present?
+                      Date.parse(params[:week])
+    else
+                      Date.current.beginning_of_week
+    end
+
+    @week_start = @current_week
+    @week_end = @current_week.end_of_week
+    @prev_week = @week_start - 1.week
+    @next_week = @week_start + 1.week
+
+    # Get tasks for the current week
+    week_tasks = @tasks.where(due_date: @week_start..@week_end)
+                      .includes(:assignee, :created_by)
+                      .order(:due_date, :due_time, :priority)
+
+    # Organize tasks by day of week
+    @tasks_by_day = {}
+    (@week_start..@week_end).each do |date|
+      @tasks_by_day[date] = week_tasks.select { |task| task.due_date == date }
+    end
+
+    # Also include tasks without due dates in a separate section
+    @tasks_without_due_date = @tasks.where(due_date: nil)
+                                   .includes(:assignee, :created_by)
+                                   .order(:priority, :created_at)
+  end
+
+  def setup_list_view
+    # Sort
+    case params[:sort]
+    when "priority"
+      @tasks = @tasks.by_priority
+    when "due_date"
+      @tasks = @tasks.by_due_date
+    else
+      @tasks = @tasks.recent
+    end
+
+    @tasks = @tasks.includes(:assignee, :created_by)
+  end
 
   def set_task
     @task = current_user_tasks.find(params[:id])
