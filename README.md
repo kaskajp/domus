@@ -96,18 +96,7 @@ docs: documentation (no version bump)
 test: tests (no version bump)
 ```
 
-### Example Workflow
-
-```bash
-# Make changes
-git add .
-
-# Use conventional commit format
-git commit -m "feat: add task management system"
-
-# Push to main branch (triggers release)
-git push origin main
-```
+### Workflow
 
 See [Development Guidelines](.github/CONTRIBUTING.md) for detailed commit standards and development approach.
 
