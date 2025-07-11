@@ -1,0 +1,196 @@
+<% content_for :title, "New Task - Domus" %>
+
+<div class="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+  <div class="mb-6">
+    <h1 class="text-2xl font-bold text-gray-900">Create New Task</h1>
+    <p class="text-gray-600 mt-1">Add a new task or chore for your household</p>
+  </div>
+
+  <div class="bg-white shadow rounded-lg">
+    <div class="px-6 py-6">
+      <%= form_with model: @task, local: true, class: "space-y-6" do |form| %>
+        <% if @task.errors.any? %>
+          <div class="bg-red-50 border border-red-200 rounded-md p-4">
+            <h3 class="text-sm font-medium text-red-800">Please fix the following errors:</h3>
+            <ul class="mt-2 text-sm text-red-700">
+              <% @task.errors.full_messages.each do |message| %>
+                <li>• <%= message %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
+
+        <!-- Basic Information -->
+        <div>
+          <h3 class="text-lg font-medium text-gray-900 mb-4">Basic Information</h3>
+          
+          <div class="form-group">
+            <%= form.label :title, class: "form-label" %>
+            <%= form.text_field :title, 
+                required: true, 
+                autofocus: true,
+                placeholder: "Enter task title",
+                class: "form-input" %>
+          </div>
+
+          <div class="form-group">
+            <%= form.label :description, class: "form-label" %>
+            <%= form.text_area :description, 
+                rows: 3,
+                placeholder: "Describe the task (optional)",
+                class: "form-input" %>
+          </div>
+        </div>
+
+        <!-- Assignment and Priority -->
+        <div>
+          <h3 class="text-lg font-medium text-gray-900 mb-4">Assignment & Priority</h3>
+          
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div class="form-group">
+              <%= form.label :assignee_id, "Assign to", class: "form-label" %>
+              <%= form.select :assignee_id, 
+                  options_from_collection_for_select(@users, :id, :full_name, @task.assignee_id),
+                  { include_blank: "Unassigned" },
+                  { class: "form-input" } %>
+            </div>
+
+            <div class="form-group">
+              <%= form.label :priority, class: "form-label" %>
+              <%= form.select :priority, 
+                  options_for_select([
+                    ['Low', 'low'],
+                    ['Medium', 'medium'],
+                    ['High', 'high'],
+                    ['Urgent', 'urgent']
+                  ], @task.priority || 'medium'),
+                  {},
+                  { class: "form-input" } %>
+            </div>
+          </div>
+        </div>
+
+        <!-- Due Date and Time -->
+        <div>
+          <h3 class="text-lg font-medium text-gray-900 mb-4">Due Date & Time</h3>
+          
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div class="form-group">
+              <%= form.label :due_date, class: "form-label" %>
+              <%= form.date_field :due_date, 
+                  class: "form-input" %>
+            </div>
+
+            <div class="form-group">
+              <%= form.label :due_time, "Due time (optional)", class: "form-label" %>
+              <%= form.time_field :due_time, 
+                  class: "form-input" %>
+            </div>
+          </div>
+        </div>
+
+        <!-- Recurring Options -->
+        <div>
+          <h3 class="text-lg font-medium text-gray-900 mb-4">Recurring Options</h3>
+          
+          <div class="form-group">
+            <label class="flex items-center">
+              <%= form.check_box :recurring, 
+                  class: "rounded border-gray-300 text-blue-600 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50",
+                  data: { controller: "tasks", action: "tasks#toggleRecurring" } %>
+              <span class="ml-2 text-sm text-gray-700">This is a recurring task</span>
+            </label>
+          </div>
+
+          <div id="recurring-options" class="<%= @task.recurring? ? '' : 'hidden' %> space-y-4">
+            <div class="form-group">
+              <%= form.label :recurrence_type, "Recurrence", class: "form-label" %>
+              <%= form.select :recurrence_type, 
+                  options_for_select([
+                    ['Daily', 'daily'],
+                    ['Weekly', 'weekly'],
+                    ['Monthly', 'monthly'],
+                    ['Quarterly', 'quarterly'],
+                    ['Yearly', 'yearly'],
+                    ['Custom interval', 'custom']
+                  ], @task.recurrence_type),
+                  { include_blank: "Select recurrence..." },
+                  { 
+                    class: "form-input",
+                    data: { controller: "tasks", action: "tasks#toggleCustomInterval" }
+                  } %>
+            </div>
+
+            <div id="custom-interval" class="<%= @task.recurrence_type == 'custom' ? '' : 'hidden' %> form-group">
+              <%= form.label :recurrence_interval, "Custom interval (days)", class: "form-label" %>
+              <%= form.number_field :recurrence_interval, 
+                  placeholder: "Enter number of days",
+                  min: 1,
+                  class: "form-input" %>
+              <p class="text-xs text-gray-500 mt-1">
+                Number of days between recurring tasks
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tags -->
+        <div>
+          <h3 class="text-lg font-medium text-gray-900 mb-4">Tags</h3>
+          
+          <div class="form-group">
+            <%= form.label :tags, class: "form-label" %>
+            <%= form.text_field :tags, 
+                placeholder: "Enter tags separated by commas (e.g., cleaning, kitchen, weekly)",
+                class: "form-input" %>
+            <p class="text-xs text-gray-500 mt-1">
+              Use tags to organize and categorize your tasks
+            </p>
+          </div>
+        </div>
+
+        <!-- Form Actions -->
+        <div class="pt-6 border-t border-gray-200">
+          <div class="flex items-center justify-between">
+            <%= link_to "Cancel", tasks_path, class: "btn btn-secondary" %>
+            <div class="flex space-x-3">
+              <%= form.submit "Create Task", class: "btn btn-primary" %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  // Toggle recurring options
+  const recurringCheckbox = document.querySelector('input[name="task[recurring]"][type="checkbox"]');
+  const recurringOptions = document.getElementById('recurring-options');
+  
+  if (recurringCheckbox) {
+    recurringCheckbox.addEventListener('change', function() {
+      if (this.checked) {
+        recurringOptions.classList.remove('hidden');
+      } else {
+        recurringOptions.classList.add('hidden');
+      }
+    });
+  }
+  
+  // Toggle custom interval
+  const recurrenceSelect = document.querySelector('select[name="task[recurrence_type]"]');
+  const customInterval = document.getElementById('custom-interval');
+  
+  if (recurrenceSelect) {
+    recurrenceSelect.addEventListener('change', function() {
+      if (this.value === 'custom') {
+        customInterval.classList.remove('hidden');
+      } else {
+        customInterval.classList.add('hidden');
+      }
+    });
+  }
+});
+</script> 

@@ -11,6 +11,14 @@ Rails.application.routes.draw do
   post   "/signup",  to: "users#create"
   resources :users, only: [ :show, :edit, :update ]
 
+  # Tasks and Chores
+  resources :tasks do
+    member do
+      patch :complete
+      patch :incomplete
+    end
+  end
+
   # Dashboard
   root "home#index"
 

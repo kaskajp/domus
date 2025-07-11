@@ -1,6 +1,9 @@
 class User < ApplicationRecord
   has_secure_password
   has_one_attached :avatar
+  
+  has_many :created_tasks, class_name: "Task", foreign_key: "created_by_id", dependent: :destroy
+  has_many :assigned_tasks, class_name: "Task", foreign_key: "assignee_id", dependent: :nullify
 
   validates :email, presence: true, uniqueness: { case_sensitive: false }, format: { with: URI::MailTo::EMAIL_REGEXP }
   validates :first_name, :last_name, presence: true
