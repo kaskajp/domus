@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 <!-- CHANGELOG:INSERT -->
 
+## [1.0.2](https://github.com/kaskajp/domus/compare/v1.0.1...v1.0.2) (2025-07-11)
+
+### 🐛 Bug Fixes
+
+* correct version display in application ([cb22218](https://github.com/kaskajp/domus/commit/cb22218f43b21998a7afc79a6646dcf738c8b3fa))
+* Linting fixes ([4e94ca7](https://github.com/kaskajp/domus/commit/4e94ca76c2b91804ed8abb0189b67216160805a6))
+
 ## [1.0.1](https://github.com/kaskajp/domus/compare/v1.0.0...v1.0.1) (2025-07-11)
 
 ### 🐛 Bug Fixes
