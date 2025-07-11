@@ -1,47 +1,47 @@
 class TasksController < ApplicationController
   before_action :require_login
-  before_action :set_task, only: [:show, :edit, :update, :destroy, :complete, :incomplete]
-  before_action :require_task_access, only: [:show, :edit, :update, :destroy]
+  before_action :set_task, only: [ :show, :edit, :update, :destroy, :complete, :incomplete ]
+  before_action :require_task_access, only: [ :show, :edit, :update, :destroy ]
 
   def index
     @tasks = current_user_tasks
-    
+
     # Filter by status
     case params[:status]
-    when 'completed'
+    when "completed"
       @tasks = @tasks.completed
-    when 'incomplete'
+    when "incomplete"
       @tasks = @tasks.incomplete
-    when 'overdue'
+    when "overdue"
       @tasks = @tasks.overdue
-    when 'due_today'
+    when "due_today"
       @tasks = @tasks.due_today
     else
       @tasks = @tasks.incomplete
     end
-    
+
     # Filter by assignee
     if params[:assignee_id].present?
       @tasks = @tasks.assigned_to(User.find(params[:assignee_id]))
     end
-    
+
     # Filter by priority
     if params[:priority].present?
       @tasks = @tasks.where(priority: params[:priority])
     end
-    
+
     # Sort
     case params[:sort]
-    when 'priority'
+    when "priority"
       @tasks = @tasks.by_priority
-    when 'due_date'
+    when "due_date"
       @tasks = @tasks.by_due_date
     else
       @tasks = @tasks.recent
     end
-    
+
     @tasks = @tasks.includes(:assignee, :created_by)
-    
+
     # Statistics for dashboard
     @stats = {
       total: current_user_tasks.count,
@@ -50,7 +50,7 @@ class TasksController < ApplicationController
       overdue: current_user_tasks.overdue.count,
       due_today: current_user_tasks.due_today.count
     }
-    
+
     @users = User.all.order(:first_name)
   end
 
@@ -66,9 +66,9 @@ class TasksController < ApplicationController
   def create
     @task = Task.new(task_params)
     @task.created_by = current_user
-    
+
     if @task.save
-      flash[:notice] = t('tasks.task_created')
+      flash[:notice] = t("tasks.task_created")
       redirect_to @task
     else
       @users = User.all.order(:first_name)
@@ -82,7 +82,7 @@ class TasksController < ApplicationController
 
   def update
     if @task.update(task_params)
-      flash[:notice] = t('tasks.task_updated')
+      flash[:notice] = t("tasks.task_updated")
       redirect_to @task
     else
       @users = User.all.order(:first_name)
@@ -93,27 +93,27 @@ class TasksController < ApplicationController
   def destroy
     title = @task.title
     @task.destroy!
-    flash[:notice] = t('tasks.task_deleted')
+    flash[:notice] = t("tasks.task_deleted")
     redirect_to tasks_path
   end
 
   def complete
     @task.complete!
-    
+
     # Create next occurrence if recurring
     if @task.recurring?
       next_task = @task.create_next_occurrence!
-      flash[:notice] = t('tasks.task_completed_recurring', date: next_task.due_date)
+      flash[:notice] = t("tasks.task_completed_recurring", date: next_task.due_date)
     else
-      flash[:notice] = t('tasks.task_completed')
+      flash[:notice] = t("tasks.task_completed")
     end
-    
+
     redirect_back(fallback_location: tasks_path)
   end
 
   def incomplete
     @task.incomplete!
-    flash[:notice] = t('tasks.task_incomplete')
+    flash[:notice] = t("tasks.task_incomplete")
     redirect_back(fallback_location: tasks_path)
   end
 
@@ -134,13 +134,13 @@ class TasksController < ApplicationController
   def require_task_access
     return if current_user.admin?
     return if @task.created_by == current_user || @task.assignee == current_user
-    
-    flash[:alert] = t('tasks.no_permission')
+
+    flash[:alert] = t("tasks.no_permission")
     redirect_to tasks_path
   end
 
   def task_params
-    params.require(:task).permit(:title, :description, :assignee_id, :due_date, :due_time, 
+    params.require(:task).permit(:title, :description, :assignee_id, :due_date, :due_time,
                                  :priority, :tags, :recurring, :recurrence_type, :recurrence_interval)
   end
-end 
+end

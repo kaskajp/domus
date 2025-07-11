@@ -6,7 +6,7 @@ class Task < ApplicationRecord
   validates :priority, inclusion: { in: %w[low medium high urgent] }
   validates :recurrence_type, inclusion: { in: %w[daily weekly monthly quarterly yearly custom] }, allow_blank: true
   validates :recurrence_interval, presence: true, numericality: { greater_than: 0 }, if: :custom_recurrence?
-  
+
   validate :due_date_cannot_be_in_past, if: :due_date_changed?
   validate :recurring_task_must_have_recurrence_type, if: :recurring?
 
@@ -72,15 +72,15 @@ class Task < ApplicationRecord
   def due_datetime
     return nil unless due_date.present?
     return due_date.to_time if due_time.blank?
-    
+
     Time.zone.parse("#{due_date} #{due_time}")
   end
 
   def next_due_date
     return nil unless recurring? && recurrence_type.present?
-    
+
     base_date = completed_at&.to_date || due_date || Date.current
-    
+
     case recurrence_type
     when "daily"
       base_date + (recurrence_interval || 1).days
@@ -99,12 +99,12 @@ class Task < ApplicationRecord
 
   def create_next_occurrence!
     return unless recurring? && completed?
-    
+
     next_task = self.dup
     next_task.due_date = next_due_date
     next_task.completed_at = nil
     next_task.save!
-    
+
     next_task
   end
 
@@ -123,4 +123,4 @@ class Task < ApplicationRecord
   def custom_recurrence?
     recurrence_type == "custom"
   end
-end 
+end
